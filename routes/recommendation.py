@@ -7,8 +7,11 @@ recommendation = Blueprint("recommendation", __name__)
 def recommend():
 
     data = request.json
-    movie = data.get("movie_name")
-    user = data.get("user_id")
+    movie = data.get("movie")
+
+    if not movie:
+        return jsonify({"error": "Movie name missing"}), 400
+
 
     content_movies = content_recommend(movie)
 

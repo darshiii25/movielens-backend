@@ -12,9 +12,9 @@ app = Flask(__name__)
 CORS(app)
 
 app.register_blueprint(auth)
-app.register_blueprint(recommendation)
-app.register_blueprint(review)
-app.register_blueprint(summary)
+app.register_blueprint(recommendation, url_prefix="/api")
+app.register_blueprint(review, url_prefix="/api")
+app.register_blueprint(summary, url_prefix="/api")
 
 @app.route("/")
 def home():
